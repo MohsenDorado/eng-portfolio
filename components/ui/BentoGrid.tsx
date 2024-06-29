@@ -1,15 +1,19 @@
+"use client"
 import { useState } from "react";
 import { IoCopyOutline } from "react-icons/io5";
 
 // Also install this npm i --save-dev @types/react-lottie
+import Lottie from "react-lottie";
 
 
 
+
+ import animationData from "@/data/confetti.json";
 
 import { cn } from "@/utils/cn";
-import MagicButton from "./MagicButton";
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
 import { GlobeDemo } from "./GridDemo";
+import MagicButton from "./MagicButton";
 
 export const BentoGrid = ({
   className,
@@ -36,6 +40,7 @@ export const BentoGridItem = ({
   id,
   title,
   description,
+  //   remove unecessary things here
   img,
   imgClassName,
   titleClassName,
@@ -65,7 +70,7 @@ export const BentoGridItem = ({
   };
 
   const handleCopy = () => {
-    const text = "hsu@jsmastery.pro";
+    const text = "mohsendorado@gmail.com";
     navigator.clipboard.writeText(text);
     setCopied(true);
   };
@@ -109,12 +114,12 @@ export const BentoGridItem = ({
             />
           )}
         </div>
-         {id === 6 && (
+        {id === 6 && (
           // add background animation , remove the p tag
           <BackgroundGradientAnimation>
             <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl"></div>
           </BackgroundGradientAnimation>
-        )} 
+        )}
 
         <div
           className={cn(
@@ -135,7 +140,7 @@ export const BentoGridItem = ({
           </div>
 
           {/* for the github 3d globe */}
-           {id === 2 && <GlobeDemo />} 
+          {id === 2 && <GlobeDemo />}
 
           {/* Tech stack list div */}
           {id === 3 && (
@@ -178,7 +183,7 @@ export const BentoGridItem = ({
                   }`}
               >
                 {/* <img src="/confetti.gif" alt="confetti" /> */}
-                {/* <Lottie options={defaultOptions} height={200} width={400} /> */}
+                <Lottie options={{loop:copied,autoplay:copied,animationData}} />
               </div>
 
               <MagicButton
